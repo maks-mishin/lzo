@@ -1076,6 +1076,9 @@ compress_overrun:
                 printf("  compression overwrite error in block %lu "
                        "(%lu %lu %lu %lu)\n",
                        blocks, (unsigned long)c_len, (unsigned long)d_len, (unsigned long)bl, (unsigned long)block_c.len);
+                if (fp_dump) {
+                    (void) fclose(fp_dump); fp_dump = NULL;
+                }
                 return EXIT_LZO_ERROR;
             }
 
